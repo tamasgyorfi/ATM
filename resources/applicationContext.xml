@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+    <bean id="atmFacadeImpl" scope="prototype" class="bank.trans.AtmFacadeImpl">
+    	<property name="authenticator" ref="clientAuthenticator"></property>
+    	<property name="balanceController" ref="balanceController"></property>
+    	<property name="receiptCreator" ref="receiptCreator"></property>
+    </bean>
+    
+    <bean id="clientAuthenticator" class="bank.trans.ClientAuthenticator"></bean>
+    
+    <bean id="balanceController" class="bank.trans.BalanceController">
+    </bean>
+    
+    <bean id="receiptCreator" class="bank.trans.ReceiptCreator">
+    	<property name="responseTextCreator" ref="responseTextCreator"></property>
+    </bean>
+    
+    <bean id="responseTextCreator" class="bank.trans.ResponseTextCreator"></bean>
+    
+</beans>
